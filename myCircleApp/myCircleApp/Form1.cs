@@ -14,15 +14,14 @@ using System.Xml;
 namespace myCircleApp
 {
 
-    
-
     public partial class Form1 : Form
     {
+        int myTestWidth;
+        int myTestSize;
+        string myTestColour;
+        XmlDocument doc = new XmlDocument();
+        string xmlURL = "C:\\Users\\Admin\\source\\repos\\CircleFormsApp\\myCircleApp\\myCircleApp\\configureCircle.xml";
 
-        public int borderWidth;
-        public int circleRadius;
-        public int circleColour;
-        
 
         public Form1()
         {
@@ -35,83 +34,104 @@ namespace myCircleApp
 
         }
 
-
         private void createCircle_Click_1(object sender, EventArgs e)
         {
 
 
-        
-     
-         ///// the code below creates and writes xml file /////////////////////////////////////
+            ////////// creates and writes xml file using whatever is currently selected in the combo boxes /////////////////////////////////////
+            try
+            {
+                XmlTextWriter defineCircle = new XmlTextWriter(xmlURL, Encoding.UTF8);
+                defineCircle.Formatting = Formatting.Indented;
+                defineCircle.WriteStartElement("CircleSpecs");
+                defineCircle.WriteStartElement("CircleColour");
+                defineCircle.WriteString(comboBox1.Text);
+                defineCircle.WriteEndElement();
+                defineCircle.WriteStartElement("CircleSize");
+                defineCircle.WriteString(comboBox2.Text);
+                defineCircle.WriteEndElement();
+                defineCircle.WriteStartElement("BorderWidth");
+                defineCircle.WriteString(comboBox3.Text);
+                defineCircle.WriteEndElement();
+                defineCircle.WriteEndElement();
+                defineCircle.Close();
+            }
+            catch (Exception) {
+                MessageBox.Show("Unable to Create XML File! Ensure that the 'xmlURL' string value in Form1.cs is referencing a valid URL. ");
+            }
 
-            XmlTextWriter defineCircle = new XmlTextWriter("C: \\Users\\Admin\\source\\repos\\myCircleApp\\myCircleApp\\configureCircle.xml", Encoding.UTF8 );
-            defineCircle.Formatting = Formatting.Indented;
-            defineCircle.WriteStartElement("CircleSpecs");  
-            defineCircle.WriteStartElement("CircleColour");
-            defineCircle.WriteString(textBox3.Text);
-            defineCircle.WriteEndElement();
-            defineCircle.WriteStartElement("CircleSize");
-            defineCircle.WriteString(textBox1.Text);
-            defineCircle.WriteEndElement();
-            defineCircle.WriteStartElement("BorderWidth");
-            defineCircle.WriteString(textBox2.Text);
-            defineCircle.WriteEndElement();
-            defineCircle.WriteEndElement();
-            defineCircle.Close();
+            ///////////////////////////////the code below loads and reads the xml file we just created /////////////////////////////////
 
-            /////////////////////the code below reads from the xml file we just created /////////////////////////////////
+            try
+            {
+                /////////////////////load the xml file..///////////////
+                doc.Load(xmlURL);
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load("C:\\Users\\Admin\\source\\repos\\myCircleApp\\myCircleApp\\configureCircle.xml");
-
-
-            ///////////////////////////////////  reads the Colour ///////////////////////////////////////////////
-            XmlNode myCircleColour = doc.SelectSingleNode("/CircleSpecs/CircleColour");
-            string myTestColour = myCircleColour.InnerText;
-      
-            ///////////////////////////////////  reads the size ///////////////////////////////////////////////
-            XmlNode myCircleSize = doc.SelectSingleNode("/CircleSpecs/CircleSize");
-            int myTestSize = Convert.ToInt32(myCircleSize.InnerText);
-
-            ///////////////////////////////////  reads the border width ///////////////////////////////////////////////
-            XmlNode myCircleBorderWidth = doc.SelectSingleNode("/CircleSpecs/BorderWidth");
-            int myTestWidth = Convert.ToInt32(myCircleBorderWidth.InnerText);
+                ///////////////////////////////////  reads the Colour node ///////////////////////////////////////////////
+                XmlNode myCircleColour = doc.SelectSingleNode("/CircleSpecs/CircleColour");
+                myTestColour = myCircleColour.InnerText;
 
 
-            //////////////////// the code below creates a circle for real ////////////////////////////////////////////   
+                ///////////////////////////////////  reads the size node ///////////////////////////////////////////////
+                XmlNode myCircleSize = doc.SelectSingleNode("/CircleSpecs/CircleSize");
+                myTestSize = Convert.ToInt32(myCircleSize.InnerText);
 
+                ///////////////////////////////////  reads the borderWidth node ///////////////////////////////////////////////
+                XmlNode myCircleBorderWidth = doc.SelectSingleNode("/CircleSpecs/BorderWidth");
+                myTestWidth = Convert.ToInt32(myCircleBorderWidth.InnerText);
+
+                /*
+                MessageBox.Show(myTestColour + myTestSize + myTestWidth);
+                */
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to load XML File! Ensure that the 'xmlURL' string value in Form1.cs is referencing a valid URL.");
+            }
+
+
+            try
+            { 
+
+            //////////////////// create circle using xml node names from above as parameters //////////////////
             Graphics soonToBCircle = this.CreateGraphics();
-            // Make a red pen.
+
+            ///// clears the screen in case there's already a circle.....//////////////
+            soonToBCircle.Clear(Color.White);
+
+            ///////// Make a pen to draw the circle ///////////////////////////
             Pen myPen = new Pen(Color.FromName(myTestColour), myTestWidth);
             
-            soonToBCircle.DrawEllipse(myPen,50,50,myTestSize,myTestSize);
+            //////////////// draws the circle /////////////////////
+            soonToBCircle.DrawEllipse(myPen,50,25,myTestSize,myTestSize);
 
-            /*
-            MessageBox.Show(myTestColour + myTestSize + myTestWidth);
-            */
-        }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't draw circle now.");
+            }
 
-        private void eraseCircle_Click_1(object sender, EventArgs e)
+
+
+}
+
+
+
+        private void eraseCircle_Click(object sender, EventArgs e)
         {
-           
+            Graphics soonToNotBCircle = this.CreateGraphics();
+            soonToNotBCircle.Clear(Color.White);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
