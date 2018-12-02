@@ -1,6 +1,6 @@
 ﻿namespace myCircleApp
 {
-    partial class Form1
+    partial class CircleMakerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.eraseCircle = new System.Windows.Forms.Button();
             this.createCircle = new System.Windows.Forms.Button();
@@ -34,9 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ColourComboBox = new System.Windows.Forms.ComboBox();
+            this.CircleSizeBox = new System.Windows.Forms.ComboBox();
+            this.BorderWidthBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // eraseCircle
@@ -64,18 +64,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(130, 264);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Border Width (px)";
+            this.label1.Text = "Border Width";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 264);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Circle Size (px)";
+            this.label2.Text = "Circle Size";
             // 
             // label3
             // 
@@ -87,10 +87,11 @@
             this.label3.Text = "Circle Colour";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // comboBox1
+            // ColourComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ColourComboBox.AllowDrop = true;
+            this.ColourComboBox.FormattingEnabled = true;
+            this.ColourComboBox.Items.AddRange(new object[] {
             "Blue",
             "Green",
             "Red",
@@ -99,17 +100,17 @@
             "Purple",
             "Black",
             "Pink"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 229);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(114, 21);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.Text = "Blue";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ColourComboBox.Location = new System.Drawing.Point(13, 229);
+            this.ColourComboBox.Name = "ColourComboBox";
+            this.ColourComboBox.Size = new System.Drawing.Size(114, 21);
+            this.ColourComboBox.TabIndex = 4;
+            this.ColourComboBox.Text = "Blue";
+            this.ColourComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBoxes_SelectedIndexChanged);
             // 
-            // comboBox2
+            // CircleSizeBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.CircleSizeBox.FormattingEnabled = true;
+            this.CircleSizeBox.Items.AddRange(new object[] {
             "20",
             "40",
             "80",
@@ -118,47 +119,48 @@
             "140",
             "160",
             "180"});
-            this.comboBox2.Location = new System.Drawing.Point(12, 280);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(52, 21);
-            this.comboBox2.TabIndex = 4;
-            this.comboBox2.Text = "100";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.CircleSizeBox.Location = new System.Drawing.Point(12, 280);
+            this.CircleSizeBox.Name = "CircleSizeBox";
+            this.CircleSizeBox.Size = new System.Drawing.Size(52, 21);
+            this.CircleSizeBox.TabIndex = 4;
+            this.CircleSizeBox.Text = "100";
+            this.CircleSizeBox.SelectedIndexChanged += new System.EventHandler(this.ComboBoxes_SelectedIndexChanged);
             // 
-            // comboBox3
+            // BorderWidthBox
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.BorderWidthBox.FormattingEnabled = true;
+            this.BorderWidthBox.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4",
-            "5",
             "6",
-            "7",
-            "8"});
-            this.comboBox3.Location = new System.Drawing.Point(133, 280);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(56, 21);
-            this.comboBox3.TabIndex = 4;
-            this.comboBox3.Text = "4";
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            "8",
+            "10",
+            "12"});
+            this.BorderWidthBox.Location = new System.Drawing.Point(133, 280);
+            this.BorderWidthBox.Name = "BorderWidthBox";
+            this.BorderWidthBox.Size = new System.Drawing.Size(56, 21);
+            this.BorderWidthBox.TabIndex = 4;
+            this.BorderWidthBox.Text = "4";
+            this.BorderWidthBox.SelectedIndexChanged += new System.EventHandler(this.ComboBoxes_SelectedIndexChanged);
             // 
-            // Form1
+            // CircleMakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(313, 311);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.BorderWidthBox);
+            this.Controls.Add(this.CircleSizeBox);
+            this.Controls.Add(this.ColourComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.eraseCircle);
             this.Controls.Add(this.createCircle);
-            this.Name = "Form1";
+            this.Name = "CircleMakerForm";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,9 +173,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        public System.Windows.Forms.ComboBox ColourComboBox;
+        public System.Windows.Forms.ComboBox CircleSizeBox;
+        public System.Windows.Forms.ComboBox BorderWidthBox;
     }
 }
 

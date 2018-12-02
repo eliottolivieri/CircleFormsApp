@@ -1,5 +1,5 @@
-<CircleSpecs>
-  <CircleColour>Red</CircleColour>
-  <CircleSize>80</CircleSize>
-  <BorderWidth>3</BorderWidth>
+﻿<CircleSpecs>
+  <CircleColour>Blue</CircleColour>
+  <CircleSize>100</CircleSize>
+  <BorderWidth>4</BorderWidth>
 </CircleSpecs>

@@ -10,9 +10,9 @@ C:\Users\Admin\source\repos\myCircleApp\myCircleApp\obj\Debug\myCircleApp.pdb
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\bin\Debug\myCircleApp.exe
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\bin\Debug\myCircleApp.pdb
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.csprojAssemblyReference.cache
-C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.Form1.resources
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.Properties.Resources.resources
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.exe
 C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.pdb
+C:\Users\Admin\source\repos\CircleFormsApp\myCircleApp\myCircleApp\obj\Debug\myCircleApp.CircleMakerForm.resources
